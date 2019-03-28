@@ -7,7 +7,7 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 	private NodoRojoN<V, K> raiz;
 	int tamano ;
 	
-	public public ArbolRojoN() {
+	public public ArbolRojoN<V, K>() {
 		tamano=0;
 }
 
@@ -23,8 +23,11 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 
 	@Override
 	public V get(K key) {
-		// TODO Auto-generated method stub
-		return null;
+		NodoRojoN<V, K> der= raiz;
+		NodoRojoN<V, K> izq= raiz;
+		while(raiz.darDerecha()!=null||raiz.darIzq()!=null){
+			
+		}
 	}
 
 	@Override
