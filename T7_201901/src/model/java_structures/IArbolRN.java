@@ -1,34 +1,33 @@
 package model.java_structures;
 
-public interface IArbolRN<K, V>{
-	
-	boolean darColor(NodoRojoN<V, K> nodo);
-	
-	int size (NodoRojoN<V, K> nodo);
-	
-	int sizeTotal();
+import java.util.Iterator;
+
+public interface IArbolRN<V,K extends Comparable<K>>{
+
+	int size ();
 	
 	boolean isEmpty();
 	
-	NodoRojoN<V, K> buscar(K key);
+	V get(K key);
 	
-	//boolean contains(K key);
+	int getHeight(K key);
 	
-	void add (V valor, K llave);
+	boolean contains(K key);
 	
-	//void deleteMin();
+	void put(K key,V val);
 	
-	//void deleteMax();
+	int height();
 	
-	void delete(NodoRojoN<V, K> nodo);
+	K min();
 	
-	void rotateRight(NodoRojoN<V, K> nodo);
+	K max();
 	
-	void rotateLeft(NodoRojoN<V, K> nodo);
+	boolean check();
 	
-	void flipCollors(NodoRojoN<V, K> nodo);
+	Iterator <K> keys();
 	
-//	void moveRedLeft(NodoRojoN<V, K> nodo);
-//	
-//	void rotateRedRight(NodoRojoN<V, K> nodo);
+	Iterator<V>valuesInRange(K init, K end);
+	
+	
+	Iterator<K>keysInRange(K init, K end);
 }
