@@ -65,14 +65,38 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 
 	@Override
 	public void put(K key, V val) {
-		// TODO Auto-generated method stub
-
+		NodoRojoN<V, K> n = raiz;
+		NodoRojoN<V, K> add = new NodoRojoN<V, K>(key, val);
+		while(n.darLlave()!=key&& (n.darDerecha()!=null||n.darIzq()!=null)){
+			if(n.darLlave().compareTo(key)<0){
+				if(n.darDerecha().darLlave().compareTo(key)>0){
+					//TODO aca va (terminar)
+				}
+			}
+			if(n.darLlave().compareTo(key)>0){
+				if(n.darIzq().darLlave().compareTo(key)<0){
+					//TODO aca va (terminar)
+				}
+			}
+			if(n.darLlave().compareTo(key)==0){
+				 n.asignarValor(val);
+				 break;
+			}
+		}
 	}
 
 	@Override
 	public int height() {
+		int i=0, d=0;
+				if(nodo.darDerecha()!=null){
+					i=size(nodo.darIzq());
+				}
+				if(nodo.darDerecha()!=null){
+					d=size(nodo.darDerecha());
+				}
+				return nodo.peso()+i+d;
 		// TODO Auto-generated method stub
-		return 0;
+		return r;
 	}
 
 	@Override
