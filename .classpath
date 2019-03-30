@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="T7_201901/src"/>
+	<classpathentry kind="src" path="T7_201901/testSource"/>
+	<classpathentry kind="lib" path="T7_201901/lib/gson-2.8.5-sources.jar"/>
+	<classpathentry kind="lib" path="T7_201901/lib/gson-2.8.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="T7_201901/bin"/>
+</classpath>

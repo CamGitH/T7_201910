@@ -41,6 +41,7 @@ public class NodoRojoN <V, K> {
 		return 1;
 	}
 	
+	
 	public boolean darColor(){
 		return color;
 	}
@@ -56,6 +57,9 @@ public class NodoRojoN <V, K> {
 	}
 	public K darLlave(){
 		return key;
+	}
+	public V darValor(){
+		return value;
 	}
 	
 	public void asignarValor(V valor){
