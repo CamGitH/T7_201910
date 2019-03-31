@@ -1,5 +1,6 @@
 package model.java_structures;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
@@ -8,7 +9,7 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 	int tamano ;
 
 //	public public ArbolRojoN<V, K>() {
-//		tamano=0;
+//		tamano=0; TODO constructor?
 //	}
 
 	@Override
@@ -87,28 +88,44 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 
 	@Override
 	public int height() {
+		NodoRojoN<V, K> nodoi = raiz;
+		NodoRojoN<V, K> nodod = raiz;
 		int i=0, d=0;
-				if(nodo.darDerecha()!=null){
-					i=size(nodo.darIzq());
+		while(nodod!=null||nodoi!=null){
+				if(nodod!=null){
+					i++;
+					nodod=nodod.darDerecha();
 				}
-				if(nodo.darDerecha()!=null){
-					d=size(nodo.darDerecha());
+				if(nodoi!=null){
+					d++;
+					nodoi=nodoi.darIzq();
 				}
-				return nodo.peso()+i+d;
-		// TODO Auto-generated method stub
-		return r;
+		}
+		return 1+i+d;		
 	}
 
 	@Override
 	public K min() {
-		// TODO Auto-generated method stub
-		return null;
+		if(raiz!=null){
+			NodoRojoN<V, K> r = raiz;
+			while(r.darIzq()!=null){
+				r=r.darIzq();
+			}
+			return r.darLlave();
+		}
+		else{return null;}
 	}
 
 	@Override
 	public K max() {
-		// TODO Auto-generated method stub
-		return null;
+		if(raiz!=null){
+			NodoRojoN<V, K> r = raiz;
+			while(r.darDerecha()!=null){
+				r=r.darDerecha();
+			}
+			return r.darLlave();
+		}
+		else{return null;}
 	}
 
 	@Override
@@ -119,13 +136,24 @@ public class ArbolRojoN<V, K extends Comparable<K>> implements IArbolRN<V , K>{
 
 	@Override
 	public Iterator<K> keys() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList list = new ArrayList<>(); 
+		Iterator iterator = list.iterator();
+		if(raiz!=null){
+			NodoRojoN<V, K> r = raiz;
+			while(r.darIzq()!=null){
+				r=r.darIzq();
+			}
+			return iterator;
+	    }
+		else return null;	
 	}
 
 	@Override
 	public Iterator<V> valuesInRange(K init, K end) {
-		// TODO Auto-generated method stub
+		NodoRojoN<V, K> ini = raiz;
+		while(ini.darLlave().compareTo(init)>0&&ini.darIzq()!=null){
+			
+		}
 		return null;
 	}
 
