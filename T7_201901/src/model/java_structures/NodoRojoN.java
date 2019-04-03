@@ -10,6 +10,7 @@ public class NodoRojoN <V, K> {
 	private NodoRojoN<V, K>  derecha, izq;
 	private K key;
 	private V value;
+	 private int size; 
 	
 	public NodoRojoN(K k, V valor){
 		

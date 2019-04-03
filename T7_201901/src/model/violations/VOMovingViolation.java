@@ -369,8 +369,9 @@ public class VOMovingViolation implements Comparable<VOMovingViolation>{
 		"OBJECTID:" + getObjectID() +
 		" ,LOCATION: "+ getLocation() +
 		" ,TICKETISSUEDATE: " + getTicketIssueDate() +
-		" ,VIOLATIONCODE: " + getViolationCode() +
-		" ,FINEAMT: " + getFineAtm();
+		" ,ADDRESS: " + getAddressID() +
+		" ,XCOORD: " + getxCoor() +
+		" ,YCOORD: " + getyCoor();
 	
 	}
 

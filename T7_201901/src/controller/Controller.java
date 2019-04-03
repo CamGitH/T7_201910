@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.channels.GatheringByteChannel;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,13 +22,13 @@ import view.ViewManager;
 
 public class Controller {
 
-	private ArbolRojoN<VOMovingViolation, VOMovingViolation> arbolRojoNegro;
+	private ArbolRojoN<String, VOMovingViolation> arbolRojoNegro;
 	private ViewManager view;
 
 	public Controller() {
 
 		view = new ViewManager();
-		arbolRojoNegro<VOMovingViolation, VOMovingViolation> = new ArbolRojoN<>();
+		arbolRojoNegro = new ArbolRojoN<String, VOMovingViolation>();
 
 	}
 
@@ -71,10 +72,20 @@ public class Controller {
 
 
 	public String consultarObjectID(String pObjectID){
-		return "";
+		VOMovingViolation infraccion;
+		infraccion = arbolRojoNegro.get(pObjectID);
+		return infraccion.ToString();
 	}
 	public String consultarObjectIDsEnRango(String pMenor, String pMayor){
-		return "";
+		Iterable<String> iter = arbolRojoNegro.keys(pMenor, pMayor);
+		String r = "";
+		for (String llave : iter) {
+		VOMovingViolation infraccion;
+		   infraccion = arbolRojoNegro.get(llave);
+		   r += r +infraccion.ToString();
+		   r += "\n";
+		}
+		return r;
 	}
 	
 	public void loadMovingViolations() {
@@ -101,7 +112,7 @@ public class Controller {
 			reader = new JsonReader(new FileReader("./data/Moving_Violations_Issued_in_June_2018.json"));
 			readFiles(gson, reader, "Junio");
 			
-			System.out.println(arbolRojoNegro.sizeTotal());
+			System.out.println(arbolRojoNegro.size());
 			System.out.println("-------------------");
 
 
@@ -120,7 +131,7 @@ public class Controller {
 			}
 			else{
 
-				arbolRojoNegro.add(lista[i], lista[i].getObjectID());
+				arbolRojoNegro.put(lista[i].getObjectID(),lista[i] );
 				
 			}
 		}
