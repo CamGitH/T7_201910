@@ -52,13 +52,13 @@ public class Controller {
 
 			case 1:
 				view.printMessage("Introduzca el objectID");
-				String pObjectID = sc.nextLine();
+				String pObjectID = sc.next();
 				view.printMessage(controller.consultarObjectID(pObjectID));
 
 			case 2:
 				view.printMessage("Introduzca el rango de objestsID a bucar");
-				String pMenor = sc.nextLine();
-				String pMayor = sc.nextLine();
+				String pMenor = sc.next();
+				String pMayor = sc.next();
 				view.printMessage(controller.consultarObjectIDsEnRango(pMenor, pMayor));
 
 			case 3:	
@@ -124,14 +124,15 @@ public class Controller {
 	private void readFiles(Gson pGson, JsonReader pReader, String pMes){
 		int num = 0;
 		VOMovingViolation[] lista = pGson.fromJson(pReader, VOMovingViolation[].class);
-		System.out.println(lista.length);
-		for(int i = 0; i<lista.length;i++){
+		System.out.println(lista[0].getObjectID());
+		for(int i = 0; i<lista.length/20;i++){
 			if(lista[i].getObjectID()==null){
 				continue;
 			}
 			else{
 
 				arbolRojoNegro.put(lista[i].getObjectID(),lista[i] );
+				num++;
 				
 			}
 		}
