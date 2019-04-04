@@ -2,6 +2,7 @@ package model.java_structures;
 
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Stack;
 
 
 /**
@@ -534,21 +535,21 @@ public class ArbolRojoN<Key extends Comparable<Key>, Value> {
         if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
         if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
-        Queue<Key> queue = (Queue<Key>) new LinkedList<Key>();
+        Stack<Key> stack = new Stack<Key>();
         // if (isEmpty() || lo.compareTo(hi) > 0) return queue;
-        keys(root, queue, lo, hi);
-        return queue;
+        keys(root, stack, lo, hi);
+        return stack;
     } 
 
     // add the keys between lo and hi in the subtree rooted at x
     // to the queue
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) { 
+    private void keys(Node x, Stack<Key> stack, Key lo, Key hi) { 
         if (x == null) return; 
         int cmplo = lo.compareTo(x.key); 
         int cmphi = hi.compareTo(x.key); 
-        if (cmplo < 0) keys(x.left, queue, lo, hi); 
-        if (cmplo <= 0 && cmphi >= 0) queue.add(x.key); 
-        if (cmphi > 0) keys(x.right, queue, lo, hi); 
+        if (cmplo < 0) keys(x.left, stack, lo, hi); 
+        if (cmplo <= 0 && cmphi >= 0) stack.add(x.key); 
+        if (cmphi > 0) keys(x.right, stack, lo, hi); 
     } 
 
     /**
