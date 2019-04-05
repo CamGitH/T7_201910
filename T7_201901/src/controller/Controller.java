@@ -112,7 +112,8 @@ public class Controller {
 			reader = new JsonReader(new FileReader("./data/Moving_Violations_Issued_in_June_2018.json"));
 			readFiles(gson, reader, "Junio");
 			
-			System.out.println(arbolRojoNegro.size());
+			System.out.println(arbolRojoNegro.size() + "Tamaño");
+			System.out.println(arbolRojoNegro.height() + "Altura");
 			System.out.println("-------------------");
 
 
@@ -125,7 +126,7 @@ public class Controller {
 		int num = 0;
 		VOMovingViolation[] lista = pGson.fromJson(pReader, VOMovingViolation[].class);
 		System.out.println(lista[0].getObjectID());
-		for(int i = 0; i<lista.length/20;i++){
+		for(int i = 0; i<lista.length;i++){
 			if(lista[i].getObjectID()==null){
 				continue;
 			}
